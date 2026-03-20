@@ -51,7 +51,7 @@ function App() {
       const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
       const response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${apiKey}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -334,21 +334,21 @@ function App() {
             <div className="footer-links">
               <div className="footer-col">
                 <h4>Product</h4>
-                <a href="#">Features</a>
-                <a href="#">How it works</a>
-                <a href="#">Pricing</a>
+                <a href="/features">Features</a>
+                <a href="/how-it-works">How it works</a>
+                <a href="/pricing">Pricing</a>
               </div>
               <div className="footer-col">
                 <h4>Support</h4>
-                <a href="#">FAQ</a>
-                <a href="#">Contact Us</a>
-                <a href="#">Report a Bug</a>
+                <a href="/faq">FAQ</a>
+                <a href="/contact">Contact Us</a>
+                <a href="/report-bug">Report a Bug</a>
               </div>
               <div className="footer-col">
                 <h4>Legal</h4>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-                <a href="#">Cookie Policy</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/cookie">Cookie Policy</a>
               </div>
             </div>
           </div>
@@ -357,6 +357,7 @@ function App() {
 
           <div className="footer-bottom">
             <p>© 2026 DocuLexi. All rights reserved.</p>
+            <p>Built with  by <span className="powered">Joe Ihimbazwe</span> — Sokcho, South Korea</p>
             <p>Powered by <span className="powered">Lexi AI</span> & <span className="powered">CloudConvert</span></p>
             <div className="footer-badges">
               <span className="badge">🔒 Secure</span>
