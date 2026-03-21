@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
 import Auth from "./Auth";
 import * as pdfjsLib from "pdfjs-dist";
+import { FaFilePdf, FaFileWord, FaShieldAlt, FaBolt, FaMobileAlt, FaCheckCircle } from "react-icons/fa";
 import "./App.css";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
@@ -170,7 +171,6 @@ function App() {
       alert("No PDF text found!");
       return;
     }
-
     setLexiLoading(true);
     setActiveFeature(action);
     setLexiResult("");
@@ -231,6 +231,7 @@ function App() {
 
   return (
     <div className="container">
+
       {/* Header */}
       <header className="header">
         <div className="header-inner">
@@ -244,13 +245,30 @@ function App() {
 
       {/* Hero */}
       <section className="hero">
-        <h1 className="hero-title">Convert PDF to Word</h1>
-        <p className="hero-subtitle">Fast, secure and free. Upload your PDF and get a Word document in seconds.</p>
+        <div className="hero-pill">✨ AI-Powered Document Conversion</div>
+        <h1 className="hero-title">Convert PDF to Word<br />in Seconds</h1>
+        <p className="hero-subtitle">Upload your PDF and get a perfectly formatted Word document instantly. Then enhance it with Lexi AI.</p>
         <div className="trust-badges">
-          <span className="trust-badge">🔒 Secure</span>
-          <span className="trust-badge">⚡ Fast</span>
+          <span className="trust-badge"><FaShieldAlt /> Secure</span>
+          <span className="trust-badge"><FaBolt /> Fast</span>
           <span className="trust-badge">🆓 Free</span>
-          <span className="trust-badge">📱 Mobile Friendly</span>
+          <span className="trust-badge"><FaMobileAlt /> Mobile Friendly</span>
+        </div>
+        <div className="stats-row">
+          <div className="stat">
+            <span className="stat-number">10,000+</span>
+            <span className="stat-label">Documents Converted</span>
+          </div>
+          <div className="stat-divider"></div>
+          <div className="stat">
+            <span className="stat-number">99%</span>
+            <span className="stat-label">Accuracy Rate</span>
+          </div>
+          <div className="stat-divider"></div>
+          <div className="stat">
+            <span className="stat-number">&lt;30s</span>
+            <span className="stat-label">Average Time</span>
+          </div>
         </div>
       </section>
 
@@ -284,6 +302,14 @@ function App() {
           {/* Step 1 & 2 — Upload */}
           {step <= 2 && (
             <>
+              <div className="card-title">
+                <FaFilePdf className="card-title-icon pdf" />
+                <span>Upload your PDF</span>
+                <span className="arrow">→</span>
+                <FaFileWord className="card-title-icon word" />
+                <span>Get Word file</span>
+              </div>
+
               <label
                 className={`upload-box ${dragOver ? "drag-over" : ""} ${file ? "has-file" : ""}`}
                 onDrop={handleDrop}
@@ -293,12 +319,12 @@ function App() {
                 <input type="file" accept=".pdf" onChange={handleFileChange} hidden />
                 {file ? (
                   <div className="file-selected">
-                    <div className="file-icon-wrap">📄</div>
+                    <div className="file-icon-wrap"><FaFilePdf style={{color: "#f87171", fontSize: "32px"}} /></div>
                     <div className="file-info">
                       <span className="file-name">{file.name}</span>
-                      <span className="file-size">{(file.size / 1024).toFixed(1)} KB</span>
+                      <span className="file-size">{(file.size / 1024).toFixed(1)} KB · PDF Document</span>
                     </div>
-                    <span className="file-check">✅</span>
+                    <FaCheckCircle style={{color: "#22c55e", fontSize: "24px"}} />
                   </div>
                 ) : (
                   <div className="upload-content">
@@ -306,7 +332,7 @@ function App() {
                     <p className="upload-hint">Drag & drop your PDF here</p>
                     <p className="upload-or">or</p>
                     <span className="upload-browse">Browse Files</span>
-                    <p className="upload-sub">PDF files only · Max 10MB</p>
+                    <p className="upload-sub">PDF files only · Max 10MB · Free</p>
                   </div>
                 )}
               </label>
@@ -317,6 +343,14 @@ function App() {
                   <button onClick={handleConvert} className="convert-btn">
                     ⚡ Convert to Word
                   </button>
+                </div>
+              )}
+
+              {!file && (
+                <div className="features-hint">
+                  <div className="feature-hint-item"><FaCheckCircle color="#22c55e" /> No registration required</div>
+                  <div className="feature-hint-item"><FaCheckCircle color="#22c55e" /> Files deleted after conversion</div>
+                  <div className="feature-hint-item"><FaCheckCircle color="#22c55e" /> 100% free to use</div>
                 </div>
               )}
             </>
@@ -356,7 +390,7 @@ function App() {
           )}
         </div>
 
-        {/* Lexi AI Card — appears after conversion */}
+        {/* Lexi AI Card */}
         {step === 4 && (
           <div className="lexi-card">
             <div className="lexi-header">
@@ -365,7 +399,10 @@ function App() {
                 <h3>Lexi AI Assistant</h3>
                 <p>Improve your document instantly</p>
               </div>
+              <div className="lexi-badge">NEW</div>
             </div>
+
+            <p className="lexi-desc">Your document has been converted! Now let Lexi AI enhance it for you. Choose an action below:</p>
 
             <div className="lexi-actions">
               <button

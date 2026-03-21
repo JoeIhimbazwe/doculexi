@@ -85,42 +85,97 @@ body {
 
 /* Hero */
 .hero {
+  padding: 24px 20px 16px;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  padding: 48px 20px 24px;
+}
+
+.hero-pill {
+  display: inline-block;
+  padding: 6px 16px;
+  background: linear-gradient(90deg, rgba(129,140,248,0.15), rgba(192,132,252,0.15));
+  border: 1px solid rgba(129, 140, 248, 0.3);
+  border-radius: 20px;
+  font-size: 13px;
+  color: #c084fc;
+  margin-bottom: 12px;
 }
 
 .hero-title {
-  font-size: 42px;
+  font-size: 32px;
   font-weight: bold;
   background: linear-gradient(90deg, #818cf8, #c084fc, #fb7185);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   line-height: 1.2;
 }
 
 .hero-subtitle {
   color: #94a3b8;
-  font-size: 16px;
+  font-size: 14px;
   max-width: 480px;
-  margin: 0 auto 20px;
+  margin: 0 auto 12px;
   line-height: 1.6;
 }
 
 .trust-badges {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
+  margin-bottom: 0;
 }
 
 .trust-badge {
-  padding: 6px 14px;
+  padding: 4px 10px;
   border-radius: 20px;
-  font-size: 13px;
+  font-size: 12px;
   background: rgba(129, 140, 248, 0.1);
   border: 1px solid rgba(129, 140, 248, 0.2);
   color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Stats Row */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-number {
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(129, 140, 248, 0.2);
 }
 
 /* Progress Steps */
@@ -128,7 +183,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 20px;
+  padding: 16px 20px;
   gap: 0;
   max-width: 500px;
   margin: 0 auto;
@@ -200,6 +255,21 @@ body {
   max-width: 560px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
+
+/* Card Title */
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  color: #94a3b8;
+  justify-content: center;
+}
+
+.card-title-icon.pdf { color: #f87171; font-size: 20px; }
+.card-title-icon.word { color: #60a5fa; font-size: 20px; }
+.arrow { color: #818cf8; font-size: 18px; }
 
 /* Upload Box */
 .upload-box {
@@ -313,6 +383,26 @@ body {
 .convert-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 28px rgba(129, 140, 248, 0.6);
+}
+
+/* Features Hint */
+.features-hint {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 16px;
+  background: rgba(129, 140, 248, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(129, 140, 248, 0.1);
+}
+
+.feature-hint-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  font-size: 13px;
 }
 
 /* Converting State */
@@ -446,29 +536,39 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
 .lexi-icon {
-  font-size: 36px;
+  font-size: 28px;
   background: linear-gradient(135deg, #818cf8, #c084fc);
   border-radius: 50%;
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
-.lexi-header h3 {
-  font-size: 18px;
-  color: #e2e8f0;
-  margin-bottom: 4px;
+.lexi-header h3 { font-size: 18px; color: #e2e8f0; margin-bottom: 4px; }
+.lexi-header p { color: #64748b; font-size: 13px; }
+
+.lexi-badge {
+  margin-left: auto;
+  padding: 4px 10px;
+  background: linear-gradient(90deg, #818cf8, #c084fc);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  color: white;
 }
 
-.lexi-header p {
+.lexi-desc {
   color: #64748b;
   font-size: 13px;
+  margin-bottom: 16px;
+  line-height: 1.6;
 }
 
 .lexi-actions {
@@ -708,8 +808,8 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .hero-title { font-size: 28px; }
-  .hero-subtitle { font-size: 14px; }
+  .hero-title { font-size: 24px; }
+  .hero-subtitle { font-size: 13px; }
   .card { padding: 24px 16px; }
   .upload-box { padding: 36px 16px; }
   .convert-btn { font-size: 16px; }
@@ -719,4 +819,6 @@ body {
   .user-email { display: none; }
   .lexi-actions { flex-direction: column; }
   .lexi-btn { min-width: unset; }
+  .stats-row { gap: 12px; }
+  .stat-divider { display: none; }
 }
